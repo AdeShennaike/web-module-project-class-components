@@ -64,7 +64,10 @@ state = {
   handleAddTask = (newTask) => {
     axios.post('http://localhost:9000/api/todos', newTask)
 		.then(res => {
-			this.setState( res.data.data)
+			this.setState({ 
+        ...this.state,
+        tasks: [...this.state.tasks, res.data.data]
+      })
 		})
 		.catch(err => {
 			console.error(err)
