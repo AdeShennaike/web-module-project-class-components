@@ -48,13 +48,24 @@ state = {
       })
     })
   }
+
+  handleClear = () => {
+    this.setState({
+      ...this.state,
+      tasks: this.state.tasks.filter( tsk => {
+        if (tsk.completed !== true){
+          return tsk
+        }
+      })
+    })
+  }
     
   render() {
     return (
       <div>
         <h1> ToDo List: MVP! </h1>
         <TodoList handleToggle = {this.handleToggle} state = {this.state}/>
-        <Form state = {this.state}/>
+        <Form handleClear = {this.handleClear} state = {this.state}/>
       </div>
     )
   }

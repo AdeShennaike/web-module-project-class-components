@@ -13,6 +13,11 @@ export default class Form extends React.Component {
       name: e.target.value
     })
   }
+
+  handleClick = (e) => {
+    e.preventDefault()
+    this.props.handleClear()
+  }
   
   render() {
     return (
@@ -25,7 +30,7 @@ export default class Form extends React.Component {
           onChange = {this.changeHandler}
           />
           <button> Add Task </button>
-          <button> Clear Completed </button>
+          <button onClick = {this.handleClick}> Clear Completed </button>
         </form>
       </div>
     )
