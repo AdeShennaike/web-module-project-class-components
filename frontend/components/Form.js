@@ -1,9 +1,10 @@
 import React from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 export default class Form extends React.Component {
   state = {
     name: '',
-    id: 152881707728,
     completed: false
   }
 
@@ -16,8 +17,17 @@ export default class Form extends React.Component {
 
   handleClick = (e) => {
     e.preventDefault()
+    axios.patch('http://localhost:9000/api/todos/:id')
+    .then(res => {
+    })
     this.props.handleClear()
   }
+  
+  onSubmit = (evt) => {
+    evt.preventDefault()
+    this.props.handleAddTask(this.state)
+
+}
   
   render() {
     return (
@@ -29,7 +39,7 @@ export default class Form extends React.Component {
           placeholder = 'New Task...'
           onChange = {this.changeHandler}
           />
-          <button> Add Task </button>
+          <button onClick = {this.onSubmit}> Add Task </button>
           <button onClick = {this.handleClick}> Clear Completed </button>
         </form>
       </div>

@@ -58,14 +58,27 @@ state = {
         }
       })
     })
+  
   }
+
+  handleAddTask = (newTask) => {
+    axios.post('http://localhost:9000/api/todos', newTask)
+		.then(res => {
+			this.setState( res.data.data)
+		})
+		.catch(err => {
+			console.error(err)
+		})
+	}
+    
+
     
   render() {
     return (
       <div>
         <h1> ToDo List: MVP! </h1>
         <TodoList handleToggle = {this.handleToggle} state = {this.state}/>
-        <Form handleClear = {this.handleClear} state = {this.state}/>
+        <Form handleClear = {this.handleClear} state = {this.state} handleAddTask = {this.handleAddTask}/>
       </div>
     )
   }
