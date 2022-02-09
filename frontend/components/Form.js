@@ -15,7 +15,6 @@ export default class Form extends React.Component {
   }
   
   render() {
-    console.log(this.state.name)
     return (
       <div>
         <form>

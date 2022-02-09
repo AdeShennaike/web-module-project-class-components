@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Todo from './Todo';
 
 export default class TodoList extends React.Component {
   render() {
     return (
       <div>
-        TodoList
+        <ul>
+          {this.props.state.tasks.map(tsk => {
+          return <Todo key = {tsk.id} task = {tsk}/>})}
+        </ul>
       </div>
     )
   }

@@ -4,12 +4,17 @@ import Form from './Form';
 import axios from 'axios';
 
 export default class App extends React.Component {
-state = {}
+state = {
+  tasks:[]
+}
 
 componentDidMount() {
 axios.get('http://localhost:9000/api/todos')
   .then( res => {
-    this.setState(res.data.data)
+    this.setState({
+      ...this.state,
+      tasks: res.data.data
+    })
   })
   .catch( err => {
     console.error(err)
